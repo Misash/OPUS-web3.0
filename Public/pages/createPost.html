@@ -1,0 +1,178 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create a Post | OPUS</title>
+    <!-- CUSTOM CSS -->
+    <link rel="stylesheet" href="../css/createPost.css">
+    <!-- FONTS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500&family=VT323&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Megrim&family=Pompiere&display=swap" rel="stylesheet">
+</head>
+<body>
+    <br><br>
+    <div class="content">
+        
+        <h1 class="title" >Create Your Post</h1>
+        <h2 class="subtitle">Edit your post before publishing</h3>
+
+        <div class="post-wrapper">
+            <div class="post-form">
+               <form id="Form"action="">
+                    <p>
+                        <label >Role title</label><br>
+                        <input type="text" name="role-tile" placeholder="Senior Blockchain Developer">
+                    </p>
+                    <p>
+                        <label >Your Organization</label><br>
+                        <input type="text" name="Org-name" placeholder="Org name">
+                        <input type="url" name="Org-website" placeholder="Org website">
+                    </p>
+                    <p>
+                        <label >Country / Region </label> <br>
+                        
+                        <select name="country-region">
+                            <optgroup label="Countries">
+                                <option value="USA">USA</option>
+                                <option value="Canada">Canada</option>
+                                <option value="India">India</option>
+                                <option value="China">China</option>
+                            </optgroup>
+                            <optgroup label="Regions">
+                                <option value="Worldwide" selected>Worldwide</option>
+                                <option value="North-America">North America</option>
+                                <option value="Central-and-South-America">Central and South America</option>
+                                <option value="Western-Europe">Western Europe</option>
+                                <option value="Eastern-Europe">Eastern Europe</option>
+                                <option value="Asia">Asia</option>
+                                <option value="Oceania">Oceania</option>
+                                <option value="Africa">Africa</option>
+                            </optgroup>
+                            
+                        </select>
+                    </p>
+
+                
+                    <hr>
+
+                    <p>
+                        <label >Category</label> <br>
+                        <select name="category">
+                            <option value="Design" >Design</option>
+                            <option value="Engineering" selected>Engineering</option>
+                            <option value="Product">Product</option>
+                            <option value="Community-Engagement">Comunity Engagement</option>
+                            <option value="Research">Research</option>
+                            <option value="Business-Development">Business Development</option>
+                            <option value="Customer-Support">Customer Support</option>
+                            <option value="Operations">Operations</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </p>
+                    <p>
+                        <label >Role Type</label> <br>
+                        <select name="role-type">
+                            <option value="Full-Time" selected>Full Time</option>
+                            <option value="Part-Time" >Part Time</option>
+                            <option value="Contract">Contract</option>
+                            <option value="Freelance">Freelance</option>
+                            <option value="Internship">Intership</option>
+                        </select>
+                    </p>
+
+                    <p>
+                        <label >Work Policy </label> <br>
+                        <select name="work-policy">
+                            <option value="Remote" selected>Remote</option>
+                            <option value="Flexible" >Flexible</option>
+                            <option value="100%-on-site">100% on-site</option>
+                        </select>
+                    </p>
+                    
+
+                    <p>
+                        <fieldset >      
+                            <legend>What does your org or project work on?</legend>  
+                            <p class="suggestion">Select all that apply</p>    
+                            <input type="checkbox" name="niche-org" value="NFTs"> NFTs<br>      
+                            <input type="checkbox" name="niche-org" value="DAOs"> DAOs<br>      
+                            <input type="checkbox" name="niche-org" value="DeFi"> DeFi<br>     
+                            <input type="checkbox" name="niche-org" value="Layer2"> Layer 2<br>   
+                            <input type="checkbox" name="niche-org" value="Wallets"> Wallets<br>  
+                            <input type="checkbox" name="niche-org" value="Metaverse"> Metaverse<br> 
+                            <input type="checkbox" name="niche-org" value="Oracles"> Oracles<br> 
+                            <input type="checkbox" name="niche-org" value="Exchanges"> Exchanges<br> 
+                            <input type="checkbox" name="niche-org" value="Custody"> Custody<br> 
+                            <input type="checkbox" name="niche-org" value="ERC20"> ERC20<br> 
+                            <input type="checkbox" name="niche-org" value="Smart-Contracts"> Smart-Contracts<br> 
+                            <input type="checkbox" name="niche-org" value="Stablecoin"> Stablecoin<br> 
+                            <input type="checkbox" name="niche-org" value="Developer-tools"> Developer-tools<br>      
+                                    
+                        </fieldset>      
+                    </p>
+                    <p>
+                        <br>
+                        <label >Skills</label> 
+                        <p class="suggestion">Separate words with a comma </p> 
+                        <input type="text" name="skill" placeholder=" Solidity, Javascript , User Research "> 
+                    <p>
+                    <p>
+                        <label >Post Description</label> <br>
+                        <textarea name="post-description" rows="10" cols="50"></textarea>
+
+                    <p>
+                    <p>
+                        <label >Application email or URL</label> <br>
+                        <input type="text" name="application" placeholder=" "> 
+                    <p>
+                    
+                    <hr>
+                    
+                    <h3 style="text-align: center; color: #fff;">Optional </h3>
+                
+                    <p>
+                        <label >Pay Method</label> <br>
+                        <select name="Pay Method">
+                            <optgroup label="Fiat">
+                                <option value="USD">USD</option>
+                                <option value="Euro">Euro</option>
+                                <option value="Yuan">Yuan</option>
+                            </optgroup>
+                            <optgroup label="Crypto">
+                                <option value="Bitcoin" selected>Bitcoin</option>
+                                <option value="Ether">Ether</option>
+                                <option value="Shiba-Inu">Shiba Inu</option>
+                            </optgroup>
+                            <option value="Equity"><b>Equity</b></option>
+                        </select>
+                        <br> <br>
+                        <input type="text" name="min-salary" placeholder="Minimun amount "> 
+                        <input type="text" name="max-salary" placeholder="Maximun amount "> 
+                    <p>
+                        <br>
+                    <p>
+                        <center> 
+                        <button class=" frame custom-btn btn-12"><span>CLICK!</span><span>POST A JOB</span></button>
+                        </center>
+                    </p>
+               </form>
+
+            </div>
+            <div class="post-preview">
+
+            </div>
+        </div>
+
+
+    </div>
+
+
+
+
+</body>
+</html>
