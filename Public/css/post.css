@@ -1,0 +1,507 @@
+a,p{
+    color: white;
+    font-size: large;
+}
+
+/* canvas background  */
+*{
+    margin: 0%;
+    padding: 0%;
+}
+::-webkit-scrollbar {
+    display: none;
+}
+
+#canvas{
+    position: absolute  ;
+    left: 0;
+    top: 0;
+    z-index: -1;
+    width: 100%;
+    overflow: scroll;
+}
+/* canvas background  */
+
+#main{
+    width: 100%;
+    position: absolute; 
+    border-radius: 1em;
+}
+
+#container
+{
+    background: linear-gradient(rgba(20, 30, 48, 0.8), rgb(7, 35, 66));
+    padding: 3em;
+    margin: 10%;
+}
+
+#top{
+    overflow: hidden;
+}
+
+#top > div{
+    color: white;
+    float: right;
+    padding: 2em;
+    padding-right: 2em;
+    font-weight: bold;
+    font-family: sans-serif ;
+} 
+
+#info{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+#info > div{
+    background-color: none;
+    padding: 0.5em 0.8em;
+    border-radius: 0.5em;
+    margin: 3em 0;
+    border: 2px solid white;
+}
+
+#info > div{
+
+    font-family: sans-serif;
+    font-size: 1.5rem;
+    text-decoration: none;
+    text-shadow:
+        -2px 4px 4px #091243, 
+        0 0 10px #ddf500e1,
+        inset 1px 1px 1px white;
+    color: #dcf500;
+    border: 2px solid;
+    border-radius: 4px;
+    background-color: transparent;
+    box-shadow: 
+        0 1px 2px rgba(0,0,0, 0.6), 
+        2px 1px 4px rgba(0,0,0, 0.3), 
+        2px 4px 3px rgba(3,0,128, 0.3), 
+        0 0 7px 2px rgba(238, 255, 0, 0.6), 
+        inset 0 1px 2px rgba(0,0,0, 0.6), 
+        inset 2px 1px 4px rgba(0,0,0, 0.3), 
+        inset 2px 4px 3px rgba(3,0,128, 0.3), 
+        inset 0 0 7px 2px rgba(251, 255, 0, 0.6);
+}
+
+
+#title{
+    text-align: center;
+}
+#title>p{
+    font-size: 7em;
+    font-family: 'Bebas Neue', cursive;
+}
+#organization-name{
+    padding: 0.5em 10%;
+}
+#organization-name>a{
+    font-family: 'Signika Negative', sans-serif;
+    font-size: 1.5em;
+}
+
+#content{
+    
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
+    flex-flow: wrap;
+    width: 100%;
+    padding: 1em 0 3em;
+}
+
+#content>div{
+    
+    background-color: white;
+    padding: 0.5em 0.8em;
+    border-radius: 0.5em;
+    margin: 2% 1em ;
+}
+
+#content > div{
+
+    font-family: sans-serif;
+    font-size: 1.3rem;
+    text-decoration: none;
+    text-shadow:
+        -2px 4px 4px #091243, 
+        0 0 10px #00e5f5e8,
+        inset 1px 1px 1px white;
+    color: #05E8E0;;
+    border: 2px solid;
+    border-radius: 4px;
+    background-color: transparent;
+    box-shadow: 
+        0 1px 2px rgba(0,0,0, 0.6), 
+        2px 1px 4px rgba(0,0,0, 0.3), 
+        2px 4px 3px rgba(3,0,128, 0.3), 
+        0 0 7px 2px rgba(0, 119, 255, 0.6), 
+        inset 0 1px 2px rgba(102, 99, 99, 0.6), 
+        inset 2px 1px 4px rgba(0,0,0, 0.3), 
+        inset 2px 4px 3px rgba(3,0,128, 0.3), 
+        inset 0 0 7px 2px rgba(0, 102, 255, 0.637);
+}
+#description{
+    margin: 1em;
+}
+#description>a{
+    font-size: 1.5em;
+    font-family: 'Ubuntu', sans-serif;
+}
+
+#apply, #send-btn{
+    text-align: center;
+}
+
+:root {
+    --clr-one: rgb(255, 20, 147);
+    --clr-three: rgb(138, 43, 226);
+}
+
+.neon-button {
+    font-size: 1.5rem;
+    font-family: sans-serif;
+    font-weight: bold;
+    display: inline-block;
+    cursor: pointer;
+    text-decoration: none;
+    padding: 0.5em 1em;
+    margin: 2rem;
+    border-radius: 0.25em;
+    position: relative;
+}
+
+.neon-button-1 {
+    color: var(--clr-one);
+    border: var(--clr-one) 0.125em solid;
+    text-shadow: 0 0 0.125em hsl(0 0% 100% / 0.3), 0 0 0.45em --clr-one;
+    box-shadow: inset 0 0 0.5em 0 var(--clr-one), 0 0 0.5em 0 var(--clr-one);
+}
+
+.neon-button-3 {
+    color: var(--clr-three);
+    border: var(--clr-three) 0.125em solid;
+    text-shadow: 0 0 0.125em hsl(0 0% 100% / 0.3), 0 0 0.45em --clr-three;
+    box-shadow: inset 0 0 0.5em 0 var(--clr-three), 0 0 0.5em 0 var(--clr-three);
+}
+
+.neon-button::before {
+    content: "";
+    position: absolute;
+    top: 120%;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transform: perspective(1.5em) rotateX(45deg) scale(0.8, 0.3);
+    filter: blur(1.5em);
+    opacity: 0.7;
+    pointer-events: none;
+}
+
+.neon-button.active::before {
+    animation: scalingShadow 0.5s ease-in-out;
+}
+
+@keyframes scalingShadow {
+0% {
+    top: 120%;
+    transform: perspective(1.5em) rotateX(45deg) scale(0.8, 0.3);
+}
+50% {
+    top: 165%;
+    transform: perspective(1.5em) rotateX(45deg) scale(0.75, 0.3);
+}
+100% {
+    top: 120%;
+    transform: perspective(1.5em) rotateX(45deg) scale(0.8, 0.3);
+}
+}
+
+.neon-button-1::before {
+    background: var(--clr-one);
+}
+
+.neon-button-3::before {
+    background: var(--clr-three);
+}
+
+.neon-button::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    opacity: 0;
+    z-index: -1;
+    transition: opacity 100ms linear;
+}
+
+.neon-button-1::after {
+    box-shadow: 0 0 2em 0.5em var(--clr-one);
+    background-color: var(--clr-one);
+}
+
+.neon-button-3::after {
+    box-shadow: 0 0 2em 0.5em var(--clr-three);
+    background-color: var(--clr-three);
+}
+
+.neon-button:hover::before,
+.neon-button:focus::before {
+    color:white;
+    background-color: rgba(0,0,0,1)
+}
+
+.neon-button:hover::after,
+.neon-button:focus::after {
+    color:white;
+    background-color: rgba(0,0,0,1)
+}
+
+.neon-button:hover,
+.neon-button:focus {
+    outline: none;
+    color:white;
+    text-shadow: none;
+}
+
+.active {
+    animation: animate 0.5s ease-in-out;
+}
+
+@keyframes animate {
+    0% {
+        transform: translateY(0%);
+    }
+    50% {
+        transform: translateY(-40%);
+    }
+    100% {
+        transform: translateY(0%);
+    }
+}
+
+#report-btn{
+
+    margin: 2em;
+    padding: 0.7em 1em;
+    border-radius: 0.5em;
+    font-size: 1em;
+    position: relative;
+    background: linear-gradient(90deg, #0253aab0, #34b7ebb9);
+    border: none;
+    font-size: 1;
+    color: white;
+} 
+
+#report-btn:hover{
+    background: linear-gradient(90deg, #0253aa93, #1898cab9);
+}
+
+/* pop up */
+#type{
+    padding: 1em;
+}
+
+#modal > p{
+    color: white;
+    font-family: 'Signika Negative', sans-serif;
+    text-decoration: none;
+    font-size: 2em;
+}
+
+label, #type>p{
+
+    color: white;
+    font-size: 1em;
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+textarea{
+    
+    background-color: rgba(0,0,0,5);
+    border: 1px solid gray;
+    color: white;
+    padding: 0.5em;
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 1em;
+    border-radius: 0.5em;
+    width: 90%;
+
+}
+textarea::-webkit-input-placeholder {
+    color: white;
+}
+
+textarea:-moz-placeholder { /* Firefox 18- */
+    color: white;  
+}
+
+textarea::-moz-placeholder {  /* Firefox 19+ */
+    color: white;  
+}
+
+textarea:-ms-input-placeholder {
+    color: white;  
+}
+
+textarea::placeholder {
+    color: white ;  
+}
+
+
+label, input{
+    margin: 0.5em;
+}
+
+#pop-up{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0,0,0,.6);
+    
+} 
+
+#modal{
+    
+    width: 30%;
+    background-color: rgba(0,0,0,0.8);
+    margin: 1em;
+    padding: 3%;
+    box-sizing: border-box;
+    border-radius: 0.5em;
+}
+
+#modal >p {
+    text-align: center;
+}
+#send-report{
+    margin: 3em;
+}
+
+@media screen and (min-width: 481px) and (max-width: 600px) {
+    #top>div{
+        padding: 0.5em;
+        
+    }
+    #modal{
+        width: 80%;
+        height: 80%;
+        margin: 1em;
+    }
+    #modal>p{
+        font-size: 1.8em;
+    }
+    #send-btn{
+        height: 30%;
+    }
+    #send-report{
+        margin: 1em;
+    }
+
+}
+@media screen and (min-width: 601px) and (max-width: 1024px) {
+    #modal>p{
+        font-size: 2em;
+    }
+    #modal{
+        
+        width: 60%;
+        height: 50%;
+        margin: 1em;
+    }
+    #send-btn{
+        height: 30%;
+    }
+    #send-report{
+        margin: 1em;
+    }
+    #type>p{
+        font-size: 1.6em;
+    }
+    #type>div{
+        margin: 0.6em;
+    }
+    textarea, label{
+        font-size: 1.5em;
+    }
+    #description{
+        font-size: 1.4em;
+    }
+    #top > div, #info>div, #content> div{
+        font-size: 1.6em;
+    }
+    #top > div{
+        padding: 1em;
+    }
+    #info>div{
+        margin: 1em 0;
+    }
+    
+    #organization-name{
+        font-size: 1.5em;
+    }
+    #report-btn{
+        font-size: 1.3em;
+    }
+}
+@media screen and (max-width: 480px) {
+    #modal>p{
+        font-size: 2em;
+    }
+    #modal{
+        
+        width: 80%;
+        height: 60%;
+        margin: 1em;
+    }
+    #send-btn{
+        height: 20%;
+    }
+    #send-report{
+        margin: 0.8em;
+        font-size: 1.2em;
+    }
+    #type>p{
+        font-size: 1.2em;
+    }
+    #type>div{
+        margin: 0;
+    }
+    textarea, label{
+        font-size: 1em;
+    }
+    #description{
+        font-size: 0.7em;
+    }
+    #info>div, #content> div{
+        font-size: 0.8em;
+    }
+    #top > div{
+        padding: 0.2em;
+        font-size: 0.8em;
+    }
+    #info>div{
+        margin: 1em 0;
+    }
+    #title{
+        font-size: 0.8em;
+    }
+    #organization-name{
+        font-size: 1em;
+    }
+    #report-btn{
+        font-size: 0.8em;
+    }
+    #container{
+        padding: 0.8em;
+    }
+}
