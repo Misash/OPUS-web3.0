@@ -1,0 +1,124 @@
+-- opus
+
+CREATE DATABASE OPUS;
+
+USE OPUS;
+
+CREATE TABLE NICHES(
+    id INT NOT NULL AUTO_INCREMENT,
+    name VARCHAR(20) NOT NULL,
+    PRIMARY KEY(id)
+);
+
+CREATE TABLE COUNTRIES(
+    id INT NOT NULL AUTO_INCREMENT,
+    name VARCHAR(20) NOT NULL,
+    PRIMARY KEY(id)
+);
+
+CREATE TABLE REGIONS(
+    id INT NOT NULL AUTO_INCREMENT,
+    name VARCHAR(20) NOT NULL,
+    PRIMARY KEY(id)
+);
+
+CREATE TABLE ORGANIZATIONS(
+    id INT NOT NULL AUTO_INCREMENT,
+    name VARCHAR(40) NOT NULL,
+    website VARCHAR(500) NOT NULL,
+    description VARCHAR(500) NOT NULL,
+    logo MEDIUMBLOB NOT NULL,
+    id_country INT,
+    id_region INT,
+    PRIMARY KEY(id),
+    FOREIGN KEY (id_country) REFERENCES COUNTRIES(id),
+    FOREIGN KEY (id_region) REFERENCES REGIONS(id)  
+);
+
+CREATE TABLE NICHES_ORGANIZATION(
+    id_niche INT NOT NULL,
+    id_organization INT NOT NULL,
+    PRIMARY KEY(id_niche, id_organization),
+    FOREIGN KEY (id_niche) REFERENCES NICHES(id),
+    FOREIGN KEY (id_organization) REFERENCES ORGANIZATIONS(id)
+);
+
+CREATE TABLE CATEGORIES(
+    id INT NOT NULL AUTO_INCREMENT,
+    name varchar(20),
+    PRIMARY KEY (id)
+);
+
+CREATE TABLE ROLES_TYPES(
+    id INT NOT NULL AUTO_INCREMENT,
+    name varchar(20),
+    PRIMARY KEY (id)
+);
+
+CREATE TABLE WORK_POLICIES(
+    id INT NOT NULL AUTO_INCREMENT,
+    name varchar(20),
+    PRIMARY KEY (id)
+);
+
+CREATE TABLE AMOUNTS(
+    id INT NOT NULL AUTO_INCREMENT,
+    value VARCHAR(10) NOT NULL,
+    PRIMARY KEY(id)
+);
+
+CREATE TABLE SALARIES(
+    id INT NOT NULL AUTO_INCREMENT,
+    id_salary_min INT NOT NULL,
+    id_salary_max INT NOT NULL,
+    PRIMARY KEY(id),
+    FOREIGN KEY(id_salary_min) REFERENCES AMOUNTS(id),
+    FOREIGN KEY(id_salary_max) REFERENCES AMOUNTS(id)
+);
+
+CREATE TABLE POSTS(
+	id INT NOT NULL AUTO_INCREMENT,
+	title VARCHAR(100),
+	description MEDIUMTEXT NOT NULL,
+	start_date date NOT NULL,
+	limit_date date,
+	views INT NOT NUll,
+	apply_url VARCHAR(500),
+	apply_email VARCHAR(80),
+	tag VARCHAR(140) NOT NULL,
+	id_organization INT NOT NULL,
+	id_category INT NOT NULL,
+	id_role_type INT NOT NULL,
+	id_work_policy INT NOT NULL,
+	id_salary INT,
+	PRIMARY KEY (id),
+    FOREIGN KEY (id_organization) REFERENCES ORGANIZATIONS(id),
+	FOREIGN KEY (id_category) REFERENCES CATEGORIES(id),
+	FOREIGN KEY (id_role_type) REFERENCES ROLES_TYPES(id),
+    FOREIGN KEY (id_work_policy) REFERENCES WORK_POLICIES(id),
+    FOREIGN KEY (id_salary) REFERENCES SALARIES(id)
+);  
+
+CREATE TABLE REPORTS(
+    id INT NOT NULL,
+    comment VARCHAR(400),
+    id_post INT NOT NULL,
+    PRIMARY KEY (id),
+    FOREIGN KEY (id_post) REFERENCES POSTS(id)
+);
+
+CREATE TABLE TYPES(
+    id INT NOT NULL AUTO_INCREMENT,
+    name VARCHAR(50) NOT NUll,
+    PRIMARY KEY(id) 
+);
+
+CREATE TABLE REPORT_TYPE(
+    id_report INT NOT NULL,
+    id_type INT NOT NULL,
+    PRIMARY KEY(id_report, id_type),
+    FOREIGN KEY (id_report) REFERENCES REPORTS(id),
+    FOREIGN KEY (id_type) REFERENCES TYPES(id)
+);
+
+-- FIN
