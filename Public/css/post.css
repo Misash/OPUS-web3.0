@@ -366,9 +366,29 @@ label, input{
     left: 0;
     height: 100%;
     width: 100%;
-    background-color: rgba(0,0,0,.6);
-    
+    background-color: rgba(0,0,0,.6);  
 } 
+
+#close-pop-up{
+    
+    color: white;
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+    font-size: 1.25em;
+    cursor: pointer;
+}   
+#close-pop-up:hover{
+    color: rgba(255, 255, 255, 0.658)
+}
+
+#close-pop-up:active
+{
+    color: rgba(255, 255, 255, 0.295);
+    font-size: 1.1em;
+}
+#close-button{
+    text-align: right;
+}
 
 #modal{
     

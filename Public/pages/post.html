@@ -9,6 +9,14 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Signika+Negative&family=Ubuntu:wght@300&display=swap" rel="stylesheet">
         <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
+        <!-- <script type="text/javascript">
+            var onloadCallback = function() {
+              grecaptcha.render('html_element', {
+                'sitekey' : ''
+              });
+            };
+          </script>
+       -->
         <title>Name post</title>
     </head>
     <body>
@@ -19,7 +27,7 @@
                     <div id="date">01/01/2022</div>
                     <div id="views">103 visitas</div>
                 </div>
-                <div id=info>
+                <div id="info">
                     <div id="salary">salario</div>
                     <div id="equity">equity</div>
                     <div id="niches">nichos</div>
@@ -45,33 +53,37 @@
                 <div id="apply">
                     <a id="apply-btn" class="neon-button neon-button-3" href="#"">APPLY</a>    
                 </div>
+                <div id="html_element"></div>
                 <div id="report">
                     <button id="report-btn">Report this post</button>
                 </div>
 
                 <div id="pop-up">
                     <div id="modal">
+                        <div id="close-pop-up">
+                            <div id="close-button">X</div>
+                        </div>
                         <p> REPORT THIS POST</p>
                         <div id="type">
                             <p> Select one:</p>
                             <div>
-                                <input type="radio" id="type-report-1" name="type" value="type-1">
+                                <input type="radio" class="type-report" id="type-report-1" name="type" value="1">
                                 <label for="type-report-1" >Option 1</label>
                             </div>
                             <div>
-                                <input type="radio" id="type-report-2" name="type" value="type-2">
+                                <input type="radio" class="type-report" id="type-report-2" name="type" value="2">
                                 <label for="type-report-2" >Option 2</label>
                             </div>
                             <div>
-                                <input type="radio" id="type-report-3" name="type" value="type-3">
+                                <input type="radio" class="type-report" id="type-report-3" name="type" value="3">
                                 <label for="type-report-3" >Option 3</label>
                             </div>
                             <div>
-                                <input type="radio" id="type-report-4" name="type" value="type-4">
+                                <input type="radio" class="type-report" id="type-report-4" name="type" value="4">
                                 <label for="type-report-4" >Option 4</label>
                             </div>
                             <div>
-                                <input type="radio" id="type-report-5" name="type" value="type-5">
+                                <input type="radio" class="type-report" id="type-report-5" name="type" value="5">
                                 <label for="type-report-5" >other</label>
                             </div>
 
@@ -79,7 +91,7 @@
                         <div id="comment-area">
                             <textarea name="textarea" id="comment" rows="6" cols="30" placeholder="Input your comment..." ></textarea>
                         </div>
-                        <div id="send-btn">
+                        <div id="send-btn" class="1">
                             <a id="send-report" class="neon-button neon-button-1">SEND</a>
                         </div>
                     </div>
@@ -98,5 +110,6 @@
         <script type="text/javascript" src="../js/canvas_background.js"> </script>
         <script type="text/javascript" src="../js/pop_up.js"></script>
         <script type="text/javascript" src="../js/button_efect.js"></script>
+        <!-- <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit" async defer></script> -->
     </body>
-</html> 
+</html>

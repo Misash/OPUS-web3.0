@@ -1,11 +1,25 @@
 const database = require("./connection.js")
 
+exports.report_post = (id_post, id_type_report, comment) =>
+{
+  if(comment == '')
+    comment = null
+  database.query("INSERT INTO REPORTS (comment, id_post) VAlUES (?, ?)", [comment, id_post], (err, res) =>{
+    if(err){
+      console.log("ERROR_REPORT_POST", err)
+      return;
+    }
+  })
+
+  database.query("INSERT INTO REPORT_TYPE (id_report, id_type) VALUES ((SELECT MAX(id) FROM REPORTS), ?)", [id_type_report])
+}
+
+
+
 
 // codigo de ejemplo para las consultas
 const Tutorial = function(tutorial) {
-    this.title = tutorial.title;
-    this.description = tutorial.description;
-    this.published = tutorial.published;
+    
   };
   
   Tutorial.create = (newTutorial, result) => {
@@ -127,4 +141,4 @@ const Tutorial = function(tutorial) {
     });
   };
   
-  module.exports = Tutorial;
+  // module.exports = Tutorial;
