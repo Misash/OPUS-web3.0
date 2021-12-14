@@ -38,10 +38,20 @@ exports.create_post = (req, res) =>{
 
 exports.post_job = (req,res) =>{
    const data = req.body
-   //save organization
     sql.save_org(data.Org_name,data.Org_website,data.country_region)
-    //save salaries
     sql.save_niches_org(data.Org_name,data.Org_website,data.niche_name)
-   
-
+    sql.save_salaries(data.min_salary,data.max_salary)
+    sql.save_post(data)
 }
+
+
+
+
+
+
+
+
+
+
+
+
