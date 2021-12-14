@@ -1,3 +1,26 @@
+/* canvas background  */
+::-webkit-scrollbar {
+  display: none;
+}
+
+#canvas{
+  position: absolute  ;
+  left: 0;
+  top: 0;
+  z-index: -1;
+  width: 100%;
+  overflow: scroll;
+}
+
+#main{
+  width: 100%;
+  height: 100%;
+  position: absolute; 
+  border-radius: 1em;
+}
+
+/* canvas background  */
+
 :root {
     --clr-neon: hsl(317 100% 54%);
     --clr-bg: hsl(323 21% 16%);
