@@ -28,7 +28,26 @@ exports.save_org = (name,website,country_region) =>{
   })
 }
 
+exports.save_niches_org = (org_name,org_website,niche_name)  =>{
 
+  var sql = "INSERT INTO NICHES_ORGANIZATION (id_niche,id_organization) \
+  VALUES ((select id from NICHES where name = ?),(select DISTINCT id from ORGANIZATIONS where name = ? and website = ?))"
+    if(niche_name.constructor === Array){
+        for(var i=0;i<niche_name.length;i++)
+        {
+          console.log(niche_name[i])
+          database.query(sql,[niche_name[i],org_name,org_website],(err,res) =>{
+            console.log(err)
+          })
+        }
+    }else{
+      console.log(niche_name)
+      database.query(sql,[niche_name,org_name,org_website],(err,res) =>{
+        console.log(err)
+      })
+    }
+     
+}
 
 
 

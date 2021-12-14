@@ -41,6 +41,7 @@ exports.post_job = (req,res) =>{
    //save organization
     sql.save_org(data.Org_name,data.Org_website,data.country_region)
     //save salaries
-    
+    sql.save_niches_org(data.Org_name,data.Org_website,data.niche_name)
+   
 
 }
