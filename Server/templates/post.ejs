@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../css/post.css" type="text/css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Signika+Negative&family=Ubuntu:wght@300&display=swap" rel="stylesheet">
+        <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
+        <!-- <script type="text/javascript">
+            var onloadCallback = function() {
+              grecaptcha.render('html_element', {
+                'sitekey' : ''
+              });
+            };
+          </script>
+       -->
+        <title><%=data.title%></title>
+    </head>
+    <body>
+        <div id="main">
+            
+            <div id="container">
+                <div id="top">
+                    <div id="date"><%= data.start_date %></div>
+                    <div id="views"><%= data.views %> views</div>
+                </div>
+                <div id="info">
+                    <div id="min_salary">Salary min: $<%= data.min_salary %> </div>
+                    <div id="max_salary">Salary max: $<%= data.max_salary %> </div>
+                    <div id="niche"><%= data.niche_name %></div>
+                </div>
+                <div id="title"><p><%= data.title %></p></div>
+                <div id="organization-name"><p>BY:</p><a id="org_web" href="#"><%= data.name %></a></div>
+                <div id="content">
+                        <div id="category"><%=data.category_name%></div>
+                        <div id="role-type"><%=data.role_name%></div>
+                        <div id="work-policy"><%=data.work_name%></div>
+                        <% if(data.country_name){ %>
+                             <div id="country"><%=data.country_name%></div> 
+                        <%}else{ %>
+                            <div id="regions"><%=data.region_name%></div>
+                        <%}%>
+                </div>
+                <script>
+                    content = document.getElementById("content")
+                    let tag = '<%-data.tag%>'
+                    tag = tag.split(",")
+                    for (let i = 0; i < tag.length; i++)
+                        content.insertAdjacentHTML("beforeend", "<div id='skill-"+i+1+ "'>"+tag[i]+"</div>")
+                    
+                </script>
+                <div id="description"><a><%=data.post_des%></a></div>
+                <div id="apply">
+                    <a id="apply-btn" class="neon-button neon-button-3" href="#"">APPLY</a>    
+                </div>
+                <div id="html_element"></div>
+                <div id="report">
+                    <button id="report-btn">Report this post</button>
+                </div>
+
+                <div id="pop-up">
+                    <div id="modal">
+                        <div id="close-pop-up">
+                            <div id="close-button">X</div>
+                        </div>
+                        <p> REPORT THIS POST</p>
+                        <div id="type">
+                            <p> Select one:</p>
+                            <% types.forEach(function(type){ %>
+                                <div>
+                                    <input type="radio" class="type-report" id="type-report-<%=type.id%>" name="type" value="<%=type.id%>">
+                                    <label for="type-report-<%=type.id%>" ><%=type.name%></label>
+                                </div>
+                            <%})%>
+                        </div>
+                        <div id="comment-area">
+                            <textarea name="textarea" id="comment" rows="6" cols="30" placeholder="Input your comment..." ></textarea>
+                        </div>
+                        <div id="send-btn" class="<%= data.id %>">
+                            <a id="send-report" class="neon-button neon-button-1">SEND</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <canvas id="canvas" style="background: #111;"></canvas>
+        <script>
+            // apply
+            var apply = document.getElementById("apply-btn");
+            
+            apply.addEventListener("click", function(){
+                let apply_url = '<%- data.apply_url%>'
+                let applu_email = '<%- data.apply_email %>'
+                
+                if(apply_url)
+                    window.open(apply_url, "_blank")
+                window.open(apply_email, "_blank")
+            });
+            // organization website
+            var web_org = document.getElementById("org_web");
+            
+            web_org.addEventListener("click", function(){
+                
+                window.open("<%- data.website %>", "_blank")
+            });
+        </script>
+        <script type="text/javascript" src="../js/canvas_background.js"> </script>
+        <script type="text/javascript" src="../js/pop_up.js"></script>
+        <script type="text/javascript" src="../js/button_efect.js"></script>
+        <!-- <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit" async defer></script> -->
+    </body>
+</html>

@@ -14,14 +14,15 @@ exports.index = (req, res)=>{
     res.sendFile(path.join(__dirname, "/index.html"))
 }
 
-exports.get_data = (req, res) =>{
-    console.log("get_data res")
-    res.render("get_data.ejs")
-}
-
-exports.send_post = (req, res) =>{
-    console.log("sending post page")
-    res.sendFile(path.join(__dirname, "../../Public/pages/post.html"))
+exports.send_post = async (req, res) =>{
+    console.log("Sending post page with ID: ", req.params.id)
+    
+    let data_post = await sql.select_post(req.params.id)
+    console.log(data_post)
+    let types_report = await sql.select_types_report()
+    console.log(types_report)
+    sql.add_one_view_to_post(req.params.id)
+    res.render('../templates/post.ejs', {data: data_post, types: types_report})
 }
 
 exports.put_report = (req, res) =>{
