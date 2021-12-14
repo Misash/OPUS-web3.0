@@ -12,4 +12,9 @@ router.get("/post",controller.send_post)
 
 router.post("/report", controller.put_report)
 
+router.get("/createPost",controller.create_post)
+
+router.post("/post-job",controller.post_job)
+
+
 module.exports = router;

@@ -15,6 +15,22 @@ exports.report_post = (id_post, id_type_report, comment) =>
 }
 
 
+exports.save_org = (name,website,country_region) =>{
+  var sql 
+  values = [name,website,country_region]
+  if(country_region == 'USA' || country_region == 'Canada' || country_region == 'India' || country_region == 'China' ){
+    sql = "INSERT INTO ORGANIZATIONS (name,website,id_country) VALUES (?,?,(select id from COUNTRIES where name = ?))"
+  }else{
+    sql = "INSERT INTO ORGANIZATIONS (name,website,id_region) VALUES (?,?,(select id from REGIONS where name = ?))"
+  }
+  database.query(sql,values,(err,res) =>{
+    console.log(err)
+  })
+}
+
+
+
+
 
 
 // codigo de ejemplo para las consultas
