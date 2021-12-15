@@ -148,3 +148,11 @@ exports.save_user = (email,name,frecuency) =>{
   }
   
 }
+
+exports.get_user = async () =>{
+  return await query("SELECT * FROM USERS")
+}
+
+exports.get_id_frecuency = async (id) =>{
+  return await query("SELECT name FROM FRECUENCY where id = ?",[id])
+}

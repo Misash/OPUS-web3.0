@@ -17,4 +17,10 @@ router.post("/post-job",controller.post_job)
 
 router.post("/suscribe",controller.create_user)
 
+
+
+
+
+controller.send_user()
+
 module.exports = router;

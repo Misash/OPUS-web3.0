@@ -1,6 +1,7 @@
 const express = require("express")
 const path = require("path")
 const sql = require("../database/querys.js")
+const nodemailer = require('nodemailer');
 
 exports.index = (req, res)=>{
     console.log("index res")
@@ -53,10 +54,45 @@ exports.create_user = (req,res) =>{
 }
 
 
+exports.send_user = async (req, res) =>{
+    let data = await sql.get_user()
+    var now = new Date();
+
+    for(var i= 0; i < data.length; i++)
+    {
+       let frecuency = await sql.get_id_frecuency(data[i].id_frecuency)
+       var user_email = data[i].email
+        //send email daily
+       if(frecuency[0].name == 'daily' && now.getDay() != 0)
+       {
+            send_mail_to(user_email)
+       }else
+       {  //send email weekly
+                send_mail_to(user_email)
+       }
+    }
+}
 
 
-
-
-
-
-
+function send_mail_to(mail){
+    let transporter = nodemailer.createTransport({
+        service: 'gmail',
+        auth:{
+            user:'spacialWeb3@gmail.com',
+            pass:'opus1234'
+        }
+    });
+    let mailOptions ={
+        from:'OPUS',
+        to:mail,
+        subject:'Testing and testing',
+        text:'Welcome to OPUS',
+    };
+    transporter.sendMail(mailOptions,function(err, data){
+        if(err){
+            console.log('Error Occurs: ',err);
+        }else{
+            console.log('Email sent!!!');
+        }
+    });
+}

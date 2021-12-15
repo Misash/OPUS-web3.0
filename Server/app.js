@@ -26,6 +26,8 @@ app.use(express.json())
 
 // routes
 app.use(require("./routes/index.js"))
+
+
     
 // start
 app.listen(port, ()=>{
