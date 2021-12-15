@@ -28,8 +28,17 @@
                     <div id="views"><%= data.views %> views</div>
                 </div>
                 <div id="info">
-                    <div id="min_salary">Salary min: $<%= data.min_salary %> </div>
-                    <div id="max_salary">Salary max: $<%= data.max_salary %> </div>
+                    
+                    <% if(!data.min_salary){%>
+                        <div id="min_salary">Salary min: $0</div>
+                    <%}else{ %>
+                        <div id="min_salary">Salary min: $<%= data.min_salary %> </div>
+                    <%}%>
+                    <% if(!data.max_salary){%>
+                        <div id="max_salary">Salary max: $0</div>
+                    <%}else{ %>
+                        <div id="max_salary">Salary max: $<%= data.max_salary %></div>
+                    <%}%>
                     <div id="niche"><%= data.niche_name %></div>
                 </div>
                 <div id="title"><p><%= data.title %></p></div>

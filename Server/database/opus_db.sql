@@ -316,7 +316,7 @@ VALUES (?, ?)
 (SELECT MAX(id) FROM SALARIES)
 
 SELECT p.id, p.title, p.description post_des, DATE_FORMAT(p.start_date, '%d/%m/%Y') start_date, p.limit_date, p.views, p.apply_url, p.apply_email, p.tag, p.id_organization, p.id_salary, p.id_category, p.id_role_type, p.id_work_policy,
-  o.name, o.website, o.description org_des, o.id_country, o.id_region, 
+  o.name, o.website, o.id_country, o.id_region, 
   n.name niche_name,
   co.name country_name,
   re.name region_name,
@@ -331,10 +331,10 @@ SELECT p.id, p.title, p.description post_des, DATE_FORMAT(p.start_date, '%d/%m/%
   JOIN NICHES n ON (n_o.id_niche = n.id)  
   LEFT JOIN COUNTRIES co ON (co.id = o.id_country) 
   LEFT JOIN REGIONS re ON (re.id = o.id_region) 
-  JOIN SALARIES s ON (s.id = p.id_salary)
-  JOIN AMOUNTS a_min ON (a_min.id = s.id_salary_min)
-  JOIN AMOUNTS a_max ON (a_max.id = s.id_salary_max)
+  LEFT JOIN SALARIES s ON (s.id = p.id_salary)
+  LEFT JOIN AMOUNTS a_min ON (a_min.id = s.id_salary_min)
+  LEFT JOIN AMOUNTS a_max ON (a_max.id = s.id_salary_max)
   JOIN CATEGORIES ca ON (ca.id = p.id_category)
   JOIN ROLES_TYPES ro ON (ro.id = p.id_role_type)
   JOIN WORK_POLICIES w ON (w.id = p.id_work_policy)
-  WHERE p.id = 1;
+  WHERE p.id = ?
