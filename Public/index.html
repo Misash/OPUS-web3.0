@@ -18,7 +18,7 @@
         <header class="hero" >
             <div id="textH"><h2> OPUS </h2></div>
             <div class="buttonH">
-                <button id="Bhead1">
+                <button onclick="redirect_to('/createPost')"  id="Bhead1">
                    <span>Post a Job</span>
                 </button>
             </div>
@@ -71,6 +71,13 @@
     </form>
     <button class="close" onclick="document.getElementById('suscribe').style.display='none'" > X </button>
 </div>
+
+<script>
+    function redirect_to(route){
+        window.location = route
+    }
+
+</script>
 
 
 </html>
