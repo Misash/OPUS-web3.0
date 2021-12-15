@@ -30,3 +30,29 @@ exports.put_report = (req, res) =>{
     console.log("Reporting a post...")
     sql.report_post(req.body.id_post, req.body.id_type_report, req.body.comment)
 }
+
+
+exports.create_post = (req, res) =>{
+    res.sendFile(path.join(__dirname, "../../Public/pages/createPost.html"))
+}
+
+
+exports.post_job = (req,res) =>{
+   const data = req.body
+    sql.save_org(data.Org_name,data.Org_website,data.country_region)
+    sql.save_niches_org(data.Org_name,data.Org_website,data.niche_name)
+    sql.save_salaries(data.min_salary,data.max_salary)
+    sql.save_post(data)
+}
+
+
+
+
+
+
+
+
+
+
+
+

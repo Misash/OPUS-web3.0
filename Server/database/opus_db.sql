@@ -26,7 +26,6 @@ CREATE TABLE ORGANIZATIONS(
     id INT NOT NULL AUTO_INCREMENT,
     name VARCHAR(40) NOT NULL,
     website VARCHAR(500) NOT NULL,
-    description VARCHAR(500) NOT NULL,
     logo MEDIUMBLOB NOT NULL,
     id_country INT,
     id_region INT,
