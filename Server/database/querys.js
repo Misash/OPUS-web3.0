@@ -134,6 +134,17 @@ exports.save_post = (d )=>
     })
   }
 
- 
+}
 
+
+exports.save_user = (email,name,frecuency) =>{
+  if(email != '' && name !='' && frecuency !='')
+  {
+    sql = "INSERT INTO USERS (email,name,id_frecuency) VALUES (?,?,(select id from FRECUENCY where name = ?))"
+    values = [email,name,frecuency]
+    query(sql,values,(err,res) =>{
+      console.log(err)
+    })
+  }
+  
 }

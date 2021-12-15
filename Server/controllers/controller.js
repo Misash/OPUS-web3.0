@@ -46,7 +46,11 @@ exports.post_job = (req,res) =>{
 }
 
 
-
+exports.create_user = (req,res) =>{
+    const data = req.body
+    console.log("suscribe user")
+    sql.save_user(data.email,data.name,data.frecuency)
+}
 
 
 

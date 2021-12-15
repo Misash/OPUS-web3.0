@@ -7,11 +7,11 @@
     <title>OPUS</title>
     <link rel="stylesheet"  href="./css/index.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
-
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link rel="stylesheet"  href="./css/suscribe.css">
 </head>    
 <body>
     <div id="main">
@@ -55,6 +55,23 @@
     <canvas id="canvas" style="background: #111;"></canvas>
     <script type="text/javascript" src="js/canvas_background.js"> </script>
 </body>
+
+<div id="suscribe">
+    <form id="suscribe_banner" action="/suscribe" method="post" >
+        Hi 
+        <input id="user-name" name="name" size="10%" type="text"  placeholder="Type your name  ..." />
+        Get a 
+        <select name="frecuency">
+            <option value="daily" >daily</option>
+            <option value="weekly" selected>weekly</option>
+        </select>
+        email of all new web3 Jobs
+        <input id="user-email"  name="email" size="10%" type="email"  placeholder="Type yout email..." />
+        <input id="btn-suscribe"  name="btn_subscribe" type="submit"  />
+    </form>
+    <button class="close" onclick="document.getElementById('suscribe').style.display='none'" > X </button>
+</div>
+
 
 </html>
 
