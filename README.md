@@ -10,12 +10,13 @@ OPUS is a platform for job offers on the web 3.0
 
 ## Features
 
-- Send mail
+- Send mail to users 
 - Post a job
 - View a post
 - Report a job
 - General View of posts
 - Filtering posts by niches
+- Upate views of Posts
 
 ## Tech Stack
 
