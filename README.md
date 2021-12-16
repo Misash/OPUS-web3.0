@@ -1,5 +1,6 @@
 # OPUS-web3.0
-OPUS is a platform for job offers on the web 3.0 like Polkadot, CakeDefi and Tron
+OPUS is a platform for job offers on the web 3.0 like Polkadot, CakeDefi and Tron .
+
 Join the future happening today!
 ## Features
 
