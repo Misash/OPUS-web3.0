@@ -110,13 +110,14 @@ exports.save_post = (d )=>
   if(d.max_salary !='0' || d.min_salary != '0')
   {
     console.log("with salary")
+    console.log(d.role_type)
     sql = "INSERT INTO POSTS \
     (title, description, start_date, limit_date, views, apply_url, apply_email, tag, id_organization, id_salary, id_category, id_role_type, id_work_policy) \
     VALUES (?,?,sysdate(),DATE_ADD(sysdate(), INTERVAL 3 WEEK),0,?,?,?,\
-    (SELECT id FROM ORGANIZATIONS WHERE name = ? AND website = ? ),\
-    (SELECT MAX(id) FROM SALARIES where id_salary_min = ? AND id_salary_max = ? ),(SELECT id FROM CATEGORIES WHERE name = ?) ,(SELECT id FROM ROLES_TYPES WHERE name = ?),(SELECT id FROM WORK_POLICIES WHERE name = ?))"
+    (SELECT id FROM ORGANIZATIONS WHERE name = ? AND website = ? ),(SELECT max(s.id) FROM SALARIES s INNER JOIN AMOUNTS a INNER JOIN AMOUNTS b ON s.id_salary_min = a.id AND a.value =  ? \
+    AND s.id_salary_max = b.id AND b.value = ? ),(SELECT id FROM CATEGORIES WHERE name = ?) ,(SELECT id FROM ROLES_TYPES WHERE name = ?),(SELECT id FROM WORK_POLICIES WHERE name = ?))"
 
-    values = [d.title,d.description,apply_url,apply_email,d.tag,d.Org_name,d.Org_website,d.min_salary,d.max_salary,d.category,d.role_type,d.work_policy]
+    values = [d.title,d.description,d.apply_url,apply_email,d.tag,d.Org_name,d.Org_website,d.min_salary,d.max_salary,d.category,d.role_type,d.work_policy]
     query(sql,values,(err,res) =>{
       console.log(err)
     })
@@ -128,7 +129,7 @@ exports.save_post = (d )=>
     VALUES (?,?,sysdate(),DATE_ADD(sysdate(), INTERVAL 3 WEEK),0,?,?,?,\
     (SELECT id FROM ORGANIZATIONS WHERE name = ? AND website = ? ),null,(SELECT id FROM CATEGORIES WHERE name = ?) ,(SELECT id FROM ROLES_TYPES WHERE name = ?),(SELECT id FROM WORK_POLICIES WHERE name = ?))"
 
-    values = [d.title,d.description,apply_url,apply_email,d.tag,d.Org_name,d.Org_website,d.category,d.role_type,d.work_policy]
+    values = [d.title,d.description,d.apply_url,apply_email,d.tag,d.Org_name,d.Org_website,d.category,d.role_type,d.work_policy]
     query(sql,values,(err,res) =>{
       console.log(err)
     })
