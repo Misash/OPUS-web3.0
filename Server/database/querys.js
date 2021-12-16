@@ -110,13 +110,14 @@ exports.save_post = (d )=>
   if(d.max_salary !='0' || d.min_salary != '0')
   {
     console.log("with salary")
+    console.log(d.role_type)
     sql = "INSERT INTO POSTS \
     (title, description, start_date, limit_date, views, apply_url, apply_email, tag, id_organization, id_salary, id_category, id_role_type, id_work_policy) \
     VALUES (?,?,sysdate(),DATE_ADD(sysdate(), INTERVAL 3 WEEK),0,?,?,?,\
-    (SELECT id FROM ORGANIZATIONS WHERE name = ? AND website = ? ),\
-    (SELECT MAX(id) FROM SALARIES where id_salary_min = ? AND id_salary_max = ? ),(SELECT id FROM CATEGORIES WHERE name = ?) ,(SELECT id FROM ROLES_TYPES WHERE name = ?),(SELECT id FROM WORK_POLICIES WHERE name = ?))"
+    (SELECT id FROM ORGANIZATIONS WHERE name = ? AND website = ? ),(SELECT max(s.id) FROM SALARIES s INNER JOIN AMOUNTS a INNER JOIN AMOUNTS b ON s.id_salary_min = a.id AND a.value =  ? \
+    AND s.id_salary_max = b.id AND b.value = ? ),(SELECT id FROM CATEGORIES WHERE name = ?) ,(SELECT id FROM ROLES_TYPES WHERE name = ?),(SELECT id FROM WORK_POLICIES WHERE name = ?))"
 
-    values = [d.title,d.description,apply_url,apply_email,d.tag,d.Org_name,d.Org_website,d.min_salary,d.max_salary,d.category,d.role_type,d.work_policy]
+    values = [d.title,d.description,d.apply_url,apply_email,d.tag,d.Org_name,d.Org_website,d.min_salary,d.max_salary,d.category,d.role_type,d.work_policy]
     query(sql,values,(err,res) =>{
       console.log(err)
     })
@@ -128,7 +129,7 @@ exports.save_post = (d )=>
     VALUES (?,?,sysdate(),DATE_ADD(sysdate(), INTERVAL 3 WEEK),0,?,?,?,\
     (SELECT id FROM ORGANIZATIONS WHERE name = ? AND website = ? ),null,(SELECT id FROM CATEGORIES WHERE name = ?) ,(SELECT id FROM ROLES_TYPES WHERE name = ?),(SELECT id FROM WORK_POLICIES WHERE name = ?))"
 
-    values = [d.title,d.description,apply_url,apply_email,d.tag,d.Org_name,d.Org_website,d.category,d.role_type,d.work_policy]
+    values = [d.title,d.description,d.apply_url,apply_email,d.tag,d.Org_name,d.Org_website,d.category,d.role_type,d.work_policy]
     query(sql,values,(err,res) =>{
       console.log(err)
     })
@@ -155,4 +156,43 @@ exports.get_user = async () =>{
 
 exports.get_id_frecuency = async (id) =>{
   return await query("SELECT name FROM FRECUENCY where id = ?",[id])
+}
+
+exports.getPosts= async ()=>{
+  return await query(`SELECT p.id, p.title, DATE_FORMAT(p.start_date, '%d/%m/%Y') start_date, p.tag, p.id_salary, p.id_work_policy,
+  o.name, 
+  a_min.value min_salary,
+  a_max.value max_salary,
+  w.name work_name
+  FROM POSTS p
+  JOIN ORGANIZATIONS o ON (p.id_organization = o.id) 
+  LEFT JOIN SALARIES s ON (s.id = p.id_salary)
+  LEFT JOIN AMOUNTS a_min ON (a_min.id = s.id_salary_min)
+  LEFT JOIN AMOUNTS a_max ON (a_max.id = s.id_salary_max)
+  JOIN WORK_POLICIES w ON (w.id = p.id_work_policy)`)
+}
+
+exports.getPostsByNiche= async (niche)=>{
+  
+  return await query
+  (
+    `SELECT p.id, p.title, DATE_FORMAT(p.start_date, '%d/%m/%Y') start_date, p.tag, p.id_salary, p.id_work_policy,
+  o.name, 
+  a_min.value min_salary,
+  a_max.value max_salary,
+  w.name work_name
+  FROM POSTS p
+  JOIN ORGANIZATIONS o ON (p.id_organization = o.id) 
+  JOIN NICHES_ORGANIZATION n_o ON (n_o.id_organization = o.id) 
+  JOIN NICHES n ON (n_o.id_niche = n.id)  
+  LEFT JOIN SALARIES s ON (s.id = p.id_salary)
+  LEFT JOIN AMOUNTS a_min ON (a_min.id = s.id_salary_min)
+  LEFT JOIN AMOUNTS a_max ON (a_max.id = s.id_salary_max)
+  JOIN WORK_POLICIES w ON (w.id = p.id_work_policy)
+    AND  n_o.id_niche = (select id from NICHES where name = ?)
+    `,[niche]
+  )
+  
+
+
 }

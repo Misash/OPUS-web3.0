@@ -3,17 +3,24 @@ const path = require("path")
 const sql = require("../database/querys.js")
 const nodemailer = require('nodemailer');
 
-exports.index = (req, res)=>{
-    console.log("index res")
-    // example json
-    const data = {
-        "title" : "Hello world",
-        "content": "nothing"
-    }
-    // res.json(data)
+exports.index = async (req, res)=>{
 
-    res.sendFile(path.join(__dirname, "/index.html"))
+    console.log("Index visit")
+    posts = await sql.getPosts()
+    console.log(posts)
+    res.render("../templates/index.ejs", {lists: posts})
 }
+
+//--FILTER BY NICHE
+
+exports.niche = async (req, res) =>{
+    console.log("Filter by niche:", req.params.niche)
+    let niche = req.params.niche
+    let data = await sql.getPostsByNiche(niche)
+    res.render("../templates/index.ejs", {lists: data})
+}
+
+// --
 
 exports.send_post = async (req, res) =>{
     console.log("Sending post page with ID: ", req.params.id)

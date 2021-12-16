@@ -1,10 +1,13 @@
-const { application } = require("express")
 const express = require("express")
 const app = express()
+const Ddos = require("ddos")
 const morgan = require("morgan")
 const path = require("path")
 const port = 8080
 
+// DDOS attack prevent 
+var ddos = new Ddos
+app.use(ddos.express)
 
 //static files
 

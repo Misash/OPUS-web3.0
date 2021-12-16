@@ -102,8 +102,9 @@
             
             apply.addEventListener("click", function(){
                 let apply_url = '<%- data.apply_url%>'
+                console.log(apply_url)
                 let applu_email = '<%- data.apply_email %>'
-                
+                console.log(apply_email)
                 if(apply_url)
                     window.open(apply_url, "_blank")
                 window.open(apply_email, "_blank")

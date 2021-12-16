@@ -38,263 +38,72 @@
         </header>
 
         <div id="niches">
-            <button class="box">NFTs</button>
-            <button class="box">DAOs</button>
-            <button class="box">DeFi</button>
-            <button class="box">Layer 2</button>
-            <button class="box">Wallets</button>
-            <button class="box">Metaverse</button>
-            <button class="box">Oracles</button>
-            <button class="box">Exchanges</button>
-            <button class="box">Custody</button>
-            <button class="box">ERC20</button>
-            <button class="box">Smart Contracts</button>
-            <button class="box">Stablecoins</button>
-            <button class="box">Developer tools</button>
+            <button onclick="redirect_to('/Niche/NFTs')" value="NFTs" class="box">NFTs  </button>
+            <button onclick="redirect_to('/Niche/DAOs')" value="DAOs" class="box">DAOs</button>
+            <button onclick="redirect_to('/Niche/DeFi')" value="DeFi" class="box">DeFi</button>
+            <button onclick="redirect_to('/Niche/Layer 2')" value="Layer 2" class="box">Layer 2</button>
+            <button onclick="redirect_to('/Niche/Wallets')" value="Wallets" class="box">Wallets</button>
+            <button onclick="redirect_to('/Niche/Metaverse')" value="Metaverse" class="box">Metaverse</button>
+            <button onclick="redirect_to('/Niche/Oracles')" value="Oracles" class="box">Oracles</button>
+            <button onclick="redirect_to('/Niche/Exchanges')" value="Exchanges" class="box">Exchanges</button>
+            <button onclick="redirect_to('/Niche/Custody')" value="Custody" class="box">Custody</button>
+            <button onclick="redirect_to('/Niche/ERC20')" value="ERC20" class="box">ERC20</button>
+            <button onclick="redirect_to('/Niche/Smart-Contracts')" value="Smart-Contracts" class="box">Smart Contracts</button>
+            <button onclick="redirect_to('/Niche/Stablecoins')" value="Stablecoins" class="box">Stablecoins</button>
+            <button onclick="redirect_to('/Niche/Developer-tools')" value="Developer-tools" class="box">Developer tools</button>
         </div>
 
         <div class="container">
-            <div id="roles">
-             
-            </div>
-            <div id="post-1" class="post">
+            <% lists.forEach(function(post){ %>
+
+            <div id="<%=post.id%>" class="post">
                 <div class="post-top">
                     <div id="post-tittle">
-                        TITULO DEL POST EXTENSO!!!!!!
+                        <%=post.title%>
                     </div>
                     <div id="post-date">
-                        13/13/2022
+                        <%=post.start_date%>
                     </div>
                 </div>
                 <div class="post-medium">
                     <div id="org-name">
-                        NOMBRE DE LA ORGANIZACION EXTENSO!!!!
+                        <%=post.name%>
                     </div>
-                    <div id="tag">
-                        <div id="tag-1">JavaScript</div>
-                        <div id="tag-2">Node JS</div>
-                        <div id="tag-3">MONGO DB</div>
-                        <div id="tag-4">CentOS</div>
-                        <div id="tag-5">Networking</div>
-                        <div id="tag-6">CEH</div>
+                    <div id="tag-<%=post.id%>" class="tag">
+                        
                     </div>
+                    <script> 
+                        content = document.getElementById("tag-<%=post.id%>")
+                        let tag = '<%-post.tag%>'
+                        tag = tag.split(",")
+                        for (let i = 0; i < tag.length; i++)
+                            content.insertAdjacentHTML("beforeend", "<div id='sub_tag-"+i+1+ "'>"+tag[i]+"</div>")
+                    </script>                    
                 </div>
                 <div class="post-botttom">
                     <div class="left">
                         <div id="work-policy">
-                            Polica de trabajo
+                            <%=post.work_name%>
                         </div>
                         <div id="min">
-                            Min: $0000000
+                            <% if(!post.min_salary){%>
+                                Salary min: Not especified!
+                            <%}else{ %>
+                                Salary min: $<%= post.min_salary %>
+                            <%}%>
                         </div>
                         <div id="max">
-                            Max: $4000000
+                            <% if(!post.max_salary){%>
+                                Salary max: Not especified!
+                            <%}else{ %>
+                                Salary max: $<%= post.max_salary %>
+                            <%}%>
                         </div>
                     </div> 
-                    <button id="apply" class="button-apply">APPLY</button>
-                    
+                    <a id="apply" href="/post/<%= post.id %>" class="button-apply">APPLY</a>
                 </div>
-
             </div>
-            <div id="post-1" class="post">
-                <div class="post-top">
-                    <div id="post-tittle">
-                        TITULO DEL POST EXTENSO!!!!!!
-                    </div>
-                    <div id="post-date">
-                        13/13/2022
-                    </div>
-                </div>
-                <div class="post-medium">
-                    <div id="org-name">
-                        NOMBRE DE LA ORGANIZACION EXTENSO!!!!
-                    </div>
-                    <div id="tag">
-                        <div id="tag-1">JavaScript</div>
-                        <div id="tag-2">Node JS</div>
-                        <div id="tag-3">MONGO DB</div>
-                        <div id="tag-4">CentOS</div>
-                        <div id="tag-5">Networking</div>
-                        <div id="tag-6">CEH</div>
-                    </div>
-                </div>
-                <div class="post-botttom">
-                    <div class="left">
-                        <div id="work-policy">
-                            Polica de trabajo
-                        </div>
-                        <div id="min">
-                            Min: $0000000
-                        </div>
-                        <div id="max">
-                            Max: $4000000
-                        </div>
-                    </div> 
-                    <button id="apply" class="button-apply">APPLY</button>
-                    <div id="rigth">
-                    </div>
-                </div>
-
-            </div>
-            <div id="post-1" class="post">
-                <div class="post-top">
-                    <div id="post-tittle">
-                        TITULO DEL POST EXTENSO!!!!!!
-                    </div>
-                    <div id="post-date">
-                        13/13/2022
-                    </div>
-                </div>
-                <div class="post-medium">
-                    <div id="org-name">
-                        NOMBRE DE LA ORGANIZACION EXTENSO!!!!
-                    </div>
-                    <div id="tag">
-                        <div id="tag-1">JavaScript</div>
-                        <div id="tag-2">Node JS</div>
-                        <div id="tag-3">MONGO DB</div>
-                        <div id="tag-4">CentOS</div>
-                        <div id="tag-5">Networking</div>
-                        <div id="tag-6">CEH</div>
-                    </div>
-                </div>
-                <div class="post-botttom">
-                    <div class="left">
-                        <div id="work-policy">
-                            Polica de trabajo
-                        </div>
-                        <div id="min">
-                            Min: $0000000
-                        </div>
-                        <div id="max">
-                            Max: $4000000
-                        </div>
-                    </div> 
-                    <button id="apply" class="button-apply">APPLY</button>
-                    <div id="rigth">
-                    </div>
-                </div>
-
-            </div>
-            <div id="post-1" class="post">
-                <div class="post-top">
-                    <div id="post-tittle">
-                        TITULO DEL POST EXTENSO!!!!!!
-                    </div>
-                    <div id="post-date">
-                        13/13/2022
-                    </div>
-                </div>
-                <div class="post-medium">
-                    <div id="org-name">
-                        NOMBRE DE LA ORGANIZACION EXTENSO!!!!
-                    </div>
-                    <div id="tag">
-                        <div id="tag-1">JavaScript</div>
-                        <div id="tag-2">Node JS</div>
-                        <div id="tag-3">MONGO DB</div>
-                        <div id="tag-4">CentOS</div>
-                        <div id="tag-5">Networking</div>
-                        <div id="tag-6">CEH</div>
-                    </div>
-                </div>
-                <div class="post-botttom">
-                    <div class="left">
-                        <div id="work-policy">
-                            Polica de trabajo
-                        </div>
-                        <div id="min">
-                            Min: $0000000
-                        </div>
-                        <div id="max">
-                            Max: $4000000
-                        </div>
-                    </div> 
-                    <button id="apply" class="button-apply">APPLY</button>
-                    <div id="rigth">
-                    </div>
-                </div>
-
-            </div>
-            <div id="post-1" class="post">
-                <div class="post-top">
-                    <div id="post-tittle">
-                        TITULO DEL POST EXTENSO!!!!!!
-                    </div>
-                    <div id="post-date">
-                        13/13/2022
-                    </div>
-                </div>
-                <div class="post-medium">
-                    <div id="org-name">
-                        NOMBRE DE LA ORGANIZACION EXTENSO!!!!
-                    </div>
-                    <div id="tag">
-                        <div id="tag-1">JavaScript</div>
-                        <div id="tag-2">Node JS</div>
-                        <div id="tag-3">MONGO DB</div>
-                        <div id="tag-4">CentOS</div>
-                        <div id="tag-5">Networking</div>
-                        <div id="tag-6">CEH</div>
-                    </div>
-                </div>
-                <div class="post-botttom">
-                    <div class="left">
-                        <div id="work-policy">
-                            Polica de trabajo
-                        </div>
-                        <div id="min">
-                            Min: $0000000
-                        </div>
-                        <div id="max">
-                            Max: $4000000
-                        </div>
-                    </div> 
-                    <button id="apply" class="button-apply">APPLY</button>
-                    <div id="rigth">
-                    </div>
-                </div>
-
-            </div>
-            <div id="post-1" class="post">
-                <div class="post-top">
-                    <div id="post-tittle">
-                        TITULO DEL POST EXTENSO!!!!!!
-                    </div>
-                    <div id="post-date">
-                        13/13/2022
-                    </div>
-                </div>
-                <div class="post-medium">
-                    <div id="org-name">
-                        NOMBRE DE LA ORGANIZACION EXTENSO!!!!
-                    </div>
-                    <div id="tag">
-                        <div id="tag-1">JavaScript</div>
-                        <div id="tag-2">Node JS</div>
-                        <div id="tag-3">MONGO DB</div>
-                        <div id="tag-4">CentOS</div>
-                        <div id="tag-5">Networking</div>
-                        <div id="tag-6">CEH</div>
-                    </div>
-                </div>
-                <div class="post-botttom">
-                    <div class="left">
-                        <div id="work-policy">
-                            Polica de trabajo
-                        </div>
-                        <div id="min">
-                            Min: $0000000
-                        </div>
-                        <div id="max">
-                            Max: $4000000
-                        </div>
-                    </div> 
-                    <a id="apply" class="button-apply">APPLY</a>
-                    
-                </div>
-
-            </div>
+            <%})%>
         </div>
 
 
