@@ -156,3 +156,22 @@ exports.get_user = async () =>{
 exports.get_id_frecuency = async (id) =>{
   return await query("SELECT name FROM FRECUENCY where id = ?",[id])
 }
+
+exports.getPosts= async ()=>{
+  return await query('SELECT id,title,tag FROM POSTS')
+}
+
+exports.getPostsByNiche= async (niche)=>{
+  
+  return await query
+  (
+    `
+    SELECT p.id, p.title , p.tag
+    FROM POSTS p INNER JOIN ORGANIZATIONS o INNER JOIN NICHES_ORGANIZATION noo 
+    ON p.id_organization = o.id AND o.id = noo.id_organization 
+    AND  noo.id_niche = (select id from NICHES where name = ?)
+    `,[niche]
+  )
+  
+
+}

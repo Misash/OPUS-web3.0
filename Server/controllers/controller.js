@@ -15,6 +15,17 @@ exports.index = (req, res)=>{
     res.sendFile(path.join(__dirname, "/index.html"))
 }
 
+//--FILTER BY NICHE
+
+exports.niche = async (req, res) =>{
+    console.log("Filter by niche:", req.params.niche)
+    let niche = req.params.niche
+    let data = await sql.getPostsByNiche(niche)
+    res.render("../../Public/index.ejs",{results:data})
+}
+
+// --
+
 exports.send_post = async (req, res) =>{
     console.log("Sending post page with ID: ", req.params.id)
     
