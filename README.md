@@ -6,7 +6,7 @@ Join the future happening today!
 - Send mail to users 
 - Post a job
 - View a post
-- Report a job
+- Report a post
 - General View of posts
 - Filtering posts by niches
 - Upate views of Posts
@@ -21,6 +21,10 @@ Join the future happening today!
 
 ![screenshot-localhost_8080-2021 12 16-00_09_03](https://user-images.githubusercontent.com/70419764/146312516-dd8b90f8-4595-4882-a1e7-4c3f4dd66c9d.png)
 
+![screenshot-localhost_8080-2021 12 16-00_23_01](https://user-images.githubusercontent.com/70419764/146313073-0de48887-07a7-4f8a-a5ec-8357589c515f.png)
+
+
+![screenshot-localhost_8080-2021 12 16-00_24_29](https://user-images.githubusercontent.com/70419764/146313210-feb79985-88b1-47d6-8722-a980d55e617d.png)
 
 ## Authors
 
