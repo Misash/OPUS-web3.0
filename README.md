@@ -19,9 +19,15 @@ OPUS is a platform for job offers on the web 3.0
 
 ## Tech Stack
 
-**Client:** React, Redux, TailwindCSS, Canvas.
+**Client:** Canvas , Bootstrap , Css , html
 
-**Server:** Node, Express, Nodemailer, JavaScript, Ejs, Mysql.
+**Server:** Node, Express, Nodemailer, JavaScript, Ejs, Mysql ,SMT gmail 
+
+## Demo
+
+
+
+
 
 ## Feedback
 
