@@ -18,6 +18,8 @@ Join the future happening today!
 
 **Server:** Node, Express, Nodemailer, JavaScript, Ejs, Mysql ,SMT gmail 
 
+**Database:** MySQL
+
 ## Authors
 
 -  **Aaron Misash Apaza Coaquira** - [@aaron](https://github.com/Misash)
