@@ -102,6 +102,9 @@ exports.save_post = (d )=>
   if(d.apply_link.includes('@')){
     apply_email = d.apply_link
     apply_url = null
+  }else{
+    apply_email = null
+    apply_url = d.apply_link
   }
 
   var values
@@ -117,7 +120,7 @@ exports.save_post = (d )=>
     (SELECT id FROM ORGANIZATIONS WHERE name = ? AND website = ? ),(SELECT max(s.id) FROM SALARIES s INNER JOIN AMOUNTS a INNER JOIN AMOUNTS b ON s.id_salary_min = a.id AND a.value =  ? \
     AND s.id_salary_max = b.id AND b.value = ? ),(SELECT id FROM CATEGORIES WHERE name = ?) ,(SELECT id FROM ROLES_TYPES WHERE name = ?),(SELECT id FROM WORK_POLICIES WHERE name = ?))"
 
-    values = [d.title,d.description,d.apply_url,apply_email,d.tag,d.Org_name,d.Org_website,d.min_salary,d.max_salary,d.category,d.role_type,d.work_policy]
+    values = [d.title,d.description,apply_url,apply_email,d.tag,d.Org_name,d.Org_website,d.min_salary,d.max_salary,d.category,d.role_type,d.work_policy]
     query(sql,values,(err,res) =>{
       console.log(err)
     })
@@ -129,7 +132,7 @@ exports.save_post = (d )=>
     VALUES (?,?,sysdate(),DATE_ADD(sysdate(), INTERVAL 3 WEEK),0,?,?,?,\
     (SELECT id FROM ORGANIZATIONS WHERE name = ? AND website = ? ),null,(SELECT id FROM CATEGORIES WHERE name = ?) ,(SELECT id FROM ROLES_TYPES WHERE name = ?),(SELECT id FROM WORK_POLICIES WHERE name = ?))"
 
-    values = [d.title,d.description,d.apply_url,apply_email,d.tag,d.Org_name,d.Org_website,d.category,d.role_type,d.work_policy]
+    values = [d.title,d.description,apply_url,apply_email,d.tag,d.Org_name,d.Org_website,d.category,d.role_type,d.work_policy]
     query(sql,values,(err,res) =>{
       console.log(err)
     })
