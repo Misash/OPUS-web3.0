@@ -13,7 +13,7 @@
 }
 
 #main{
-  width: 100%;
+  /* width: 100%; */
   height: 100%;
   position: absolute; 
   border-radius: 1em;
@@ -121,7 +121,7 @@ span:hover{
 
 .container{
   background: linear-gradient(rgba(139, 4, 192, 0.747), rgb(29, 4, 168));
-  margin: 3% 10%;
+  /* margin: 3% 10%; */
   padding: 3%;
   border-radius: 0.8em;
 }

@@ -1,6 +1,6 @@
 module.exports = {
     host:   "localhost",
-    user:   "root",
-    password: "20025",
+    user:   "opus-nodejs",
+    password: "password123",
     DB: "OPUS"
 }
