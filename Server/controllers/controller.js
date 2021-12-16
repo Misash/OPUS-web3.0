@@ -2,6 +2,7 @@ const express = require("express")
 const path = require("path")
 const sql = require("../database/querys.js")
 const nodemailer = require('nodemailer');
+const res = require("express/lib/response");
 
 exports.index = async (req, res)=>{
 
@@ -44,13 +45,15 @@ exports.create_post = (req, res) =>{
     res.sendFile(path.join(__dirname, "../../Public/pages/createPost.html"))
 }
 
-
-exports.post_job = (req,res) =>{
-   const data = req.body
+exports.post_job = async (req,res) =>{
+    console.log("Creating a post!")
+    const data = req.body
     sql.save_org(data.Org_name,data.Org_website,data.country_region)
     sql.save_niches_org(data.Org_name,data.Org_website,data.niche_name)
     sql.save_salaries(data.min_salary,data.max_salary)
-    sql.save_post(data)
+    let q = await sql.save_post(data)
+    console.log(q)
+    res.redirect("/post/"+q.id)
 }
 
 

@@ -95,7 +95,7 @@ exports.save_salaries = (min_salary ,max_salary) =>{
 }
 
 
-exports.save_post = (d )=>
+exports.save_post = async (d )=>
 {
   var apply_email
   var apply_url 
@@ -118,9 +118,7 @@ exports.save_post = (d )=>
     AND s.id_salary_max = b.id AND b.value = ? ),(SELECT id FROM CATEGORIES WHERE name = ?) ,(SELECT id FROM ROLES_TYPES WHERE name = ?),(SELECT id FROM WORK_POLICIES WHERE name = ?))"
 
     values = [d.title,d.description,d.apply_url,apply_email,d.tag,d.Org_name,d.Org_website,d.min_salary,d.max_salary,d.category,d.role_type,d.work_policy]
-    query(sql,values,(err,res) =>{
-      console.log(err)
-    })
+    
  
   }else{
     console.log("with no salary")
@@ -130,11 +128,9 @@ exports.save_post = (d )=>
     (SELECT id FROM ORGANIZATIONS WHERE name = ? AND website = ? ),null,(SELECT id FROM CATEGORIES WHERE name = ?) ,(SELECT id FROM ROLES_TYPES WHERE name = ?),(SELECT id FROM WORK_POLICIES WHERE name = ?))"
 
     values = [d.title,d.description,d.apply_url,apply_email,d.tag,d.Org_name,d.Org_website,d.category,d.role_type,d.work_policy]
-    query(sql,values,(err,res) =>{
-      console.log(err)
-    })
   }
-
+  await query(sql,values)
+  return (await query("SELECT MAX(id) id FROM POSTS"))[0]
 }
 
 
@@ -149,6 +145,7 @@ exports.save_user = (email,name,frecuency) =>{
   }
   
 }
+
 
 exports.get_user = async () =>{
   return await query("SELECT * FROM USERS")

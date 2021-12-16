@@ -17,7 +17,6 @@ router.post("/post-job",controller.post_job)
 
 router.post("/suscribe",controller.create_user)
 
-
 //filters
 router.get("/Niche/:niche", controller.niche)
 
