@@ -20,12 +20,6 @@ Join the future happening today!
 
 **Database:** MySQL
 
-## Authors
-
--  **Aaron Misash Apaza Coaquira** - [@aaron](https://github.com/Misash)
--  **Brigham Jeffrey Caceres Gutierrez** - [@brigham](https://github.com/Brigham-CG)
--  **Eileen Karin Apaza Coaquira** - [@eileen](https://github.com/3ileen)
-
 
 
 ## Demo
